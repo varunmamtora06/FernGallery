@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% load cart %}
+
+{% block pgtitle %} <title>My Cart</title> {% endblock pgtitle %}
+
+{% block pgcss %} <link rel="stylesheet" href="{% static 'css/cart.css' %}"> {% endblock pgcss %}
+
+{% block content %}
+    <div class="container">
+    {% if request.session.cart|is_cart_filled %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr No.</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price per pc</th>
+                    <th scope="col">Total Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in request.session.cart %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><img style="height: 80px;" class="rounded-circle" src="{{item|cart_item:"image"}}" alt=""></td>
+                        <td>{{ item|cart_item:"name" }}</td>
+                        {% comment %} <td>{{ item|cart_item_quant:request.session.cart }}</td> {% endcomment %}
+                        <td>
+                            <div class="d-flex flex-row qunt-bttns">
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <div class="minus">
+                                        <input hidden type="text" name='item' value="{{ item }}">
+                                        <input type="text" name="remove" hidden value="True">
+                                        <input type="submit" value="-">
+                                    </div>
+                                </form>
+                                <div class="qunt">
+                                    <p id="itmcnt">{{ item|cart_item_quant:request.session.cart }}</p>
+                                </div>
+                                {% if item|cart_item_stock:request.session.cart %}
+                                    <form action="" method="post">
+                                    {% csrf_token %}
+                                        <div class="plus">
+                                                <input type="text" hidden value="{{ item }}" name="item">
+                                                <input type="submit" value="+">
+                                        </div>
+                                    </form>
+                                {% else %}
+                                <div></div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>{{ item|cart_item:"price"|intcomma }}</td>
+                        <td>{{ item|cart_item_price:request.session.cart|intcomma }}</td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4"></th>
+                    <th>Total: </th>
+                    <td>{{ request.session.cart|total_order_price|intcomma }}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="d-flex flex-row flex-wrap justify-content-end">
+            <div class="confirm-order">
+                <a href="{% url 'confirmorder' %}">Confirm Order</a>
+            </div>
+        </div>
+    {% else %}
+        <p>Yor cart is empty.</p>
+    {% endif %}
+    </div>
+    <div class="blank-space">
+    </div>
+{% endblock content %}

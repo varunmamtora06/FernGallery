@@ -1,0 +1,18 @@
+.item-card{
+    border-radius: 40px;
+    background-color: white;
+    margin-bottom: 20px;
+    /* width: 50% !important; */
+}
+
+.order-date{
+    font-size: 25px;
+}
+
+.order-name, .order-count, .order-delivered, .order-total{
+    font-size: 20px;
+}
+
+.item-card>.item-image>img{
+    width: 150px;
+}

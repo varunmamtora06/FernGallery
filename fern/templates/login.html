@@ -1,0 +1,46 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block pgtitle %}
+<title>Login</title>
+{% endblock pgtitle %}
+
+{% block pgcss %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock pgcss %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-row align-items-center">
+        <div class="container login-form">
+            <form action="" method="POST">
+            {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" required placeholder="peter07">
+                </div>
+
+                <div class="form-group">
+                    <label >Enter password</label>
+                    <input type="password" class="form-control" name="password" required placeholder="******">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        <br>
+        <h4>Not a user? <a href="{% url 'register' %}">Register</a></h4><br>
+        <div class="d-flex flex-row flex-wrap">
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert" style="">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+        <div class="container back-drop">
+            <img src="{% static 'images/earth.png' %}" alt="" style="width:700px;">
+        </div>
+    </div>
+</div>
+{% endblock content %}

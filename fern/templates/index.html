@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block pgtitle %}
+    <title>Home</title>
+{% endblock pgtitle %}
+
+{% block pgcss %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock pgcss %}
+
+{% block content %}
+    <div class="container-fluid top-content ">
+        <div class="tagline d-flex flex-row text-center justify-content-evenly">
+            <p>We help realize your dreams in making a <span>garden</span>.</p>
+            <img src="{% static 'images/sprout.svg' %}" alt="">
+        </div>
+        <div class="desktop-bg">
+            <img src="{% static 'images/flower_bg.svg' %}" alt="">
+        </div>
+    </div>
+    <div class="container-fluid px-0">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/bkg.jpg' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/bkg.jpg' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/bkg.jpg' %}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="container-fluid category">
+        <h1 class="text-center">Start off your <span style="color:#0DB414;">gardening</span> with right steps</h1>
+        <div class="d-flex flex-row flex-wrap service-part">
+            <div class="col-sm service text-center">
+                <img src="{% static 'images/sprout.svg' %}" alt="">
+                <p>Choose a plant</p>
+            </div>
+            <div class="col-sm service text-center">
+                <img src="{% static 'images/sesame.svg' %}" alt="">
+                <p>Choose seeds</p>
+            </div>
+            <div class="col-sm service text-center">
+                <img src="{% static 'images/farming.svg' %}" alt="">
+                <p>Choose tools</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

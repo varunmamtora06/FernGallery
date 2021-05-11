@@ -1,0 +1,46 @@
+/* css */
+body{
+    background-color: #EBF3F2;
+}
+
+.navbar{
+    background-color: transparent !important;
+}
+
+.navbar>.container-fluid>.collapse>.navbar-nav>.nav-item>.nav-link{
+    font-size: 20px ;
+    font-weight: 700;
+}
+
+.utility{
+    width:250px;
+}
+
+#dropdownMenuButton1{
+    background-color: transparent;
+    border: transparent;
+}
+
+.loginLink, .registerLink{
+    text-align: center;
+    background-color: #00CC76;
+    width: 130px;
+    border-radius: 15px;
+}
+
+.loginLink>a, .registerLink>a{
+    font-size: 20px ;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 25px;
+    width: auto;
+}
+
+footer{
+    height: 40px;
+    background-color: #00CC76;
+}

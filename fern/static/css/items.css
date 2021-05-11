@@ -1,0 +1,50 @@
+.item-card{
+    width: 350px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.item-image{
+    padding: 5px 5px 0px 5px;
+}
+
+.item-image>img{
+    width: 200px;
+    height: 200px;
+}
+
+.item-name{
+    font-size: 30px;
+}
+
+.item-price{
+    font-size: 25px;
+}
+
+.item-operations{
+    padding: 0px 5px 5px 5px;
+}
+
+.item-operations>.qunt-bttns>form>.minus>input[type=submit], .item-operations>.qunt-bttns>form>.plus>input[type=submit]{
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+    border-style: solid ;
+    border-color: green;
+}
+
+.item-operations>.qunt-bttns>.qunt{
+    width: 50px;
+}
+
+.item-operations>.add-cart>.add-cart-bttn>input[type=submit]{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    color: white;
+    font-size: 20px;
+    width: 150px;
+    height: 50px;
+    background-color: #00CC76;
+    border: none;
+    border-radius: 7px;
+}

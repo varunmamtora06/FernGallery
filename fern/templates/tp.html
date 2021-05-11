@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart %}
+{% block pgcss %}
+<link rel="stylesheet" href="{% static 'css/identif.css' %}">
+{% endblock pgcss %}
+{% block content %}
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="pic"></input>
+    <button type="submit">Go</button>
+</form>
+
+{% if item %}
+    <div class="item-card flex-column text-center" id="{{ item.id }}">
+        <div class="item-image">
+            <img src="{{ item.item_image.url }}" alt="">
+        </div>
+        <p class="item-name">{{ item.item_name }}</p>
+        <p class="stock-info">{{ item.item_count }} in stock</p>
+        <p class="item-price">{{ item.item_price|currency_format }}</p>
+        <p class="">Per pc.</p>
+        <div class="d-flex flex-row justify-content-center item-operations">
+            
+            
+            <form action="{% url 'addtocart' %}" method="post" class="add-cart">
+                {% csrf_token %}
+                <input type="text" hidden value="{{ item.id }}" name="item">
+                <div class="add-cart-bttn">
+                    <input type="submit" value="Add to cart">
+                </div>
+            </form>
+            
+        </div>
+    </div>
+{% else %}
+{% endif %}
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart %}
+
+{% block pgcss %} <link rel="stylesheet" href="{% static 'css/userOrders.css' %}"> {% endblock pgcss %}
+{% block pgtitle %} <title>My orders</title> {% endblock pgtitle %}
+
+{% block content %}
+    
+    {% if ordered_items %}
+        <div class="container w-50">
+            {% for item in ordered_items %}
+                <div class="d-flex flex-row flex-wrap justify-content-evenly item-card">
+                    <div class="item-image">
+                        <img src="{{ item.ordered_item.item_image.url }}" alt="">
+                    </div>
+                    <div class="d-flex flex-column">
+                        <p class="order-date">Ordered on {{ item.order_date }}</p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="order-name">Name: {{ item.ordered_item.item_name }}</p>
+                            <p class="order-count">Quantity: {{ item.order_quantity }} piece(s)</p>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between">
+                            <p class="order-delivered">Status: {{ item.is_item_delivered }}</p>
+                            <div class="spacer" style="width:20px;"></div>
+                            <p class="order-total">Total: {{ item.item_amount|currency_format }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You haven't ordered anything yet.</p>
+    {% endif %}
+    
+{% endblock content %}

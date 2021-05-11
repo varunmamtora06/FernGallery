@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cart %}
+
+{% block pgcss %} <link rel="stylesheet" href="{% static 'css/items.css' %}"> {% endblock pgcss %}
+{% block pgtitle %} <title>floweringplants</title> {% endblock pgtitle %}
+
+{% block content %}
+    <div class="container">
+            <div class="d-flex flex-row flex-wrap item-row justify-content-evenly py-2">
+            {% for item in items %}
+                <div class="item-card flex-column text-center" id="{{ item.id }}">
+                    <div class="item-image">
+                        <img src="{{ item.item_image.url }}" alt="">
+                    </div>
+                    <p class="item-name">{{ item.item_name }}</p>
+                    <p class="stock-info">{{ item.item_count }} in stock</p>
+                    <p class="item-price">{{ item.item_price|currency_format }}</p>
+                    <p class="">Per {{ item|items_category }}.</p>
+                    <div class="d-flex flex-row justify-content-center item-operations">
+            {% if item|is_in_cart:request.session.cart %}
+                        <div class="d-flex flex-row qunt-bttns">
+                            <form action="#{{ item.id }}" method="post">
+                                {% csrf_token %}
+                                <div class="minus">
+                                    <input hidden type="text" name='item' value="{{ item.id }}">
+                                    <input type="text" name="remove" hidden value="True">
+                                    <input type="submit" value="-">
+                                </div>
+                            </form>
+                            <div class="qunt">
+                                <p>{{ item|cart_quantity:request.session.cart }}</p>
+                            </div>
+                            {% if item|cart_quantity:request.session.cart < item.item_count %}
+                                <form action="#{{ item.id }}" method="post">
+                                {% csrf_token %}
+                                    <div class="plus">
+                                            <input type="text" hidden value="{{ item.id }}" name="item">
+                                            <input type="submit" value="+">
+                                    </div>
+                                </form>
+                            {% else %}
+                            <div></div>
+                            {% endif %}
+                        </div>
+            {% else %}
+                        <form action="#{{ item.id }}" method="post" class="add-cart">
+                        {% csrf_token %}
+                            <input type="text" hidden value="{{ item.id }}" name="item">
+                            <div class="add-cart-bttn">
+                                <input type="submit" value="Add to cart">
+                            </div>
+                        </form>
+            {% endif %}
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+                <div class="d-flex flex-row flex-wrap item-row justify-content-evenly py-2">
+                {% endif %}
+            {% endfor %}
+            </div>
+    </div>
+{% endblock content %}

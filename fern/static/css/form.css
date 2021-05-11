@@ -1,0 +1,47 @@
+html{
+    position: relative !important;
+    height: 100% !important;
+}
+
+.register-form{
+    margin-top: 20px;
+    padding-top: 20px;
+    height: 600px;
+    width: 70%;
+    border-radius: 30px;
+background: #EBF3F2;
+box-shadow: inset 12px 12px 24px #e2e9e8,
+            inset -12px -12px 24px #f4fdfc;
+}
+.login-form{
+    margin-top: 20px;
+    padding-top: 20px;
+    height: 300px;
+    width: 70%;
+    border-radius: 30px;
+background: #EBF3F2;
+box-shadow: inset 12px 12px 24px #e2e9e8,
+            inset -12px -12px 24px #f4fdfc;
+}
+
+.login-form, .register-form{
+    font-size: 20px;
+}
+
+footer{
+    width: 100%;
+    position: absolute !important;
+    bottom: 0 !important;
+    margin-top: 10px;
+    
+}
+
+/*mobiles*/
+@media all and (max-width:600px){
+    .adoption-form{
+        width: 95%;
+    }
+    .blog-form{
+        width: 90%;
+    }
+}
