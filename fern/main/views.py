@@ -4,6 +4,7 @@ from django.contrib import messages
 import datetime
 
 from .models import *
+from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
 from .create_labels import *
 from keras.preprocessing.image import img_to_array , load_img
@@ -322,7 +323,13 @@ def uploadImg(request):
 
         item = None
 
-        item = Item.objects.get(item_name = output)
+        try:
+            item = Item.objects.get(item_name = output)
+        except ObjectDoesNotExist:
+            item = None
+            messages.info(request, 'Sorry we don\'t have this item yet')
+
+        print("item iz: ",item)
         context = {
             "item":item,
         }

@@ -35,6 +35,11 @@
         </div>
     </div>
 {% else %}
+    {% for message in messages %}
+        <div class="alert alert-danger" role="alert" style="">
+            {{ message }}
+        </div>
+    {% endfor %}
 {% endif %}
 
 
