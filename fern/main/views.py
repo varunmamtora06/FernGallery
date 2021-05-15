@@ -321,6 +321,8 @@ def uploadImg(request):
         print(get_label(test_1))
         output = get_label(test_1)[0]
 
+        os.remove(f'../fern/identifImgs/{recent_file}')
+
         item = None
 
         try:
