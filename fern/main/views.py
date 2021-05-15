@@ -251,12 +251,12 @@ def showRecentFile(fileName):
     import glob
     import os.path
 
-    folder_path = "C:/Users/chira/Desktop/sample_project_1/FernGallery/fern/identifImgs/*"
+    folder_path = "../fern/identifImgs/*"
     files = glob.glob(folder_path)
     max_file = max(files, key=os.path.getctime)
 
     # print (max_file[36:])
-    return max_file[69:]
+    return max_file[20:]
 
 def addtocart(request):
     if request.method == "POST":
@@ -298,7 +298,7 @@ def uploadImg(request):
         img = request.FILES.get('pic')
         fileName = str(img)
         img_en = base64.b64encode(img.read())
-        with open("C:/Users/chira/Desktop/sample_project_1/FernGallery/fern/identifImgs/"+fileName, "wb") as fh:
+        with open("../fern/identifImgs/"+fileName, "wb") as fh:
             fh.write(base64.b64decode(img_en))
         print(showRecentFile(fileName))
 
@@ -306,9 +306,9 @@ def uploadImg(request):
         print(recent_file)
 
 
-        model = load_model('C:/Users/chira/Desktop/sample_project_1/FernGallery/fern/main/Flowers_CLeared.h5')
+        model = load_model('../fern/main/Flowers_CLeared.h5')
 
-        img = load_img("C:/Users/chira/Desktop/sample_project_1/FernGallery/fern/identifImgs/"+recent_file, target_size = (150,150))
+        img = load_img("../fern/identifImgs/"+recent_file, target_size = (150,150))
         img = img_to_array(img)
         img = np.expand_dims(img , axis = 0)
 
