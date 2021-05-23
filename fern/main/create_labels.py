@@ -7,15 +7,15 @@ import os
 X=[]
 Z=[]
 IMG_SIZE=150
-FLOWER_ROSE_DIR= 'C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/rose'
-FLOWER_IXORA_COCCINEA_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/ixora_c'
-FLOWER_CRAPEJASMINE_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/jasmine'
-FLOWER_ALLAMANDA_CATHARTICA_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/allamanda'
-FLOWER_ORANGE_TRUMPET_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/orange_trumpet'
-FLOWER_IXORA_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/ixora'
-FLOWER_DAISY_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/daisy'
-FLOWER_SUNFLOWER_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/sunflower'
-FLOWER_LANTANA_DIR='C:/Users/chira/Desktop/sample_project_1/fern/FernGallery/fern/main/flowers/lantana'
+FLOWER_ROSE_DIR= '../fern/main/flowers/rose'
+FLOWER_IXORA_COCCINEA_DIR='../fern/main/flowers/ixora_c'
+FLOWER_CRAPEJASMINE_DIR='../fern/main/flowers/jasmine'
+FLOWER_ALLAMANDA_CATHARTICA_DIR='../fern/main/flowers/allamanda'
+FLOWER_ORANGE_TRUMPET_DIR='../fern/main/flowers/orange_trumpet'
+FLOWER_IXORA_DIR='../fern/main/flowers/ixora'
+FLOWER_DAISY_DIR='../fern/main/flowers/daisy'
+FLOWER_SUNFLOWER_DIR='../fern/main/flowers/sunflower'
+FLOWER_LANTANA_DIR='../fern/main/flowers/lantana'
 
 def assign_label(img,flower_type):
     return flower_type
