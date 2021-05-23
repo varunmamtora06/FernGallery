@@ -4,6 +4,9 @@ import os.path
 from django.core.mail import send_mail
 from decouple import config
 import datetime
+from django.contrib import messages
+
+from ..models import *
 
 def password_check(request, passwd): 
     SpecialSym =['$', '@', '#', '%'] 
