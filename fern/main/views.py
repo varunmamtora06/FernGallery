@@ -6,6 +6,7 @@ import datetime
 from .models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
+from decouple import config
 from .create_labels import *
 from keras.preprocessing.image import img_to_array , load_img
 from keras.models import load_model
@@ -394,7 +395,7 @@ def order_mail(request, total=0):
     send_mail(
         'Order Confirmed.',
         body,
-        'varunmamtora@gmail.com',
+        config('EMAIL_HOST_USER'),
         [request.user.email],
         fail_silently=False,
         )
