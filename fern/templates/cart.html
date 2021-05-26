@@ -2,6 +2,7 @@
 {% load static %}
 {% load humanize %}
 {% load cart %}
+{% load helpers %}
 
 {% block pgtitle %} <title>My Cart</title> {% endblock pgtitle %}
 
@@ -68,9 +69,15 @@
             </tfoot>
         </table>
         <div class="d-flex flex-row flex-wrap justify-content-end">
-            <div class="confirm-order">
-                <a href="{% url 'confirmorder' %}">Confirm Order</a>
-            </div>
+            {% if request.user|profile_exists %}
+                <div class="confirm-order">
+                    <a href="{% url 'confirmorder' %}">Confirm Order</a>
+                </div>
+            {% else %}
+                <div class="confirm-order">
+                    <a href="{% url 'profile' %}">Confirm Order</a>
+                </div>
+            {% endif %}
         </div>
     {% else %}
         <p>Yor cart is empty.</p>
