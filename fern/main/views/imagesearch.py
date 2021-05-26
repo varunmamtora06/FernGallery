@@ -47,6 +47,11 @@ def uploadImg(request):
 
         try:
             item = Item.objects.get(item_name = output)
+            avail_qunt = item.item_count
+            if avail_qunt <= 0:
+                item = None
+                messages.info(request, 'Sorry we don\'t have this item available.')
+
         except ObjectDoesNotExist:
             item = None
             messages.info(request, 'Sorry we don\'t have this item yet')
