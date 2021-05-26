@@ -1,5 +1,4 @@
 from django.urls import path
-from . import view
 
 from .views import main, authentication, inventory, usercart, userprofile, userorders, imagesearch
 
