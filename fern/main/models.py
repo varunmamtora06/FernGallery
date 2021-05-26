@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import models as mod
+
+from django.core.exceptions import ObjectDoesNotExist
 # Create your models here.
 
 class Profile(models.Model):
@@ -9,6 +11,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.first_name} {self.user.last_name}"
+    
+    def profile_exists(self):
+        try:
+            print(Profile.objects.get(user=request.user))
+            return Profile.objects.get(user=request.user)
+        except ObjectDoesNotExist:
+            return True
 
 class Item(models.Model):
     CATEGORIES = (
