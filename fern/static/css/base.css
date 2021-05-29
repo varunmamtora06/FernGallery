@@ -44,3 +44,8 @@ footer{
     height: 40px;
     background-color: #00CC76;
 }
+
+footer>.footer-content>p>a{
+    color: black;
+    text-decoration: none;
+}
