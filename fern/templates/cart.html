@@ -83,6 +83,11 @@
         <p>Yor cart is empty.</p>
     {% endif %}
     </div>
+    {% for message in messages %}
+        <div class="alert alert-info" role="alert" style="">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="blank-space">
     </div>
 {% endblock content %}

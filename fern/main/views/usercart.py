@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from ..models import *
-
+from django.contrib import messages
 from .utils import order_mail
 
 def addtocart(request):
@@ -87,6 +87,7 @@ def confirm_order(request):
     if order_success == 1:
         order_mail(request, total)
         del request.session['cart']
+        messages.info(request,'mail is sent')
         return redirect('cart')
     else:
         pass
