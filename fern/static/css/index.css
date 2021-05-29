@@ -28,9 +28,9 @@
 }
 
 .tagline>img{
-    width: 300px;
-    height: 300px;
-    margin-top: 10%;
+    width: 20%;
+    height: auto;
+    /* margin-top: 10%; */
 }
 
 .category>h1{
@@ -44,10 +44,19 @@
 }
 
 .category>.service-part>.service>img{
-    width: 300px;
-    height: 300px;
+    width: 30%;
+    height: auto;
 }
 
 .category>.service-part>.service>p{
     font-size: 40px;
+}
+
+@media all and (max-width:600px) {
+    .tagline>img{
+        display: none;
+    }
+    .top-content>.desktop-bg>img{
+        display: none;    
+    }
 }
